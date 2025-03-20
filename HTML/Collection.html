@@ -1,79 +1,474 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Collection | ClosteShop</title>
-    <link rel="stylesheet" href="/src/output.css">
-</head>
-<body class="bg-gray-100">
-
-    <!-- Navbar -->
-    <nav class="bg-white shadow-md py-4">
-        <div class="container mx-auto flex justify-between items-center px-6">
-            <a href="#" class="text-2xl font-bold text-gray-800">ClosteShop</a>
-            <ul class="flex space-x-6">
-                <li><a href="home.html" class="text-gray-700 hover:text-blue-500">Home</a></li>
-                <li><a href="Collection.html" class="text-blue-500 font-semibold">Collection</a></li>
-                <li><a href="login.html" class="text-gray-700 hover:text-blue-500">Login</a></li>
-                <li><a href="/HTML/Register.html" class="text-gray-700 hover:text-blue-500">Register</a></li>
-                <li><a href="#" class="text-gray-700 hover:text-blue-500">Cart (0)</a></li>
-            </ul>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/src/output.css" />
+    <link rel="shortcut icon" href="/src/IMG/Logo.jpg" type="image/x-icon" />
+    <title>COLLECTION</title>
+    <style>
+      .dropdown {
+        display: none;
+      }
+      .dropdown.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav
+      class="fixed top-0 left-0 w-full flex justify-between items-center h-16 bg-[#dd7f95] px-6 md:px-28 text-white z-50 shadow-md"
+    >
+      <div class="flex items-center">
+        <img
+          src="https://i.pinimg.com/564x/ac/3f/f4/ac3ff4d9846c3502ad7a433dce8840c0.jpg"
+          alt="TEN12Logo"
+          class="h-8 w-8 rounded-full" />
+          <a href="home.html">
+        <span class="ml-2 text-xl font-bold hover:text-gray-700">TEN12</span>
+          </a>
+      </div>
+      <div class="hidden md:flex items-center nav-links">
+        <a href="#" class="ml-4 text-sm font-semibold hover:text-gray-700"
+          >HOME</a
+        >
+        <a
+          href="/HTML/Collection.html"
+          class="ml-4 text-sm font-semibold hover:text-gray-700"
+          >COLLECTION</a
+        >
+        <a
+          href="./ManCollection.html"
+          class="ml-4 text-sm font-semibold hover:text-gray-700"
+          >MAN</a
+        >
+        <a href="#" class="ml-4 text-sm font-semibold hover:text-gray-700"
+          >WOMEN</a
+        >
+      </div>
+      <div class="hidden md:flex items-center nav-links">
+        <a
+          href="/HTML/login.html"
+          class="ml-4 text-sm font-semibold hover:text-gray-700"
+        >
+          <i class="fa-solid fa-user"></i>
+        </a>
+        <a
+          href="./productList.html"
+          class="ml-4 text-sm font-semibold hover:text-gray-700 relative"
+        >
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span
+            id="cartCount"
+            class="absolute top-[-10px] right-[-10px] bg-red-600 text-white text-xs rounded-full px-1"
+          >
+            0
+          </span>
+        </a>
+        <a href="#" class="ml-4 text-sm font-semibold hover:text-gray-700">
+          <i class="fa-solid fa-search"></i>
+        </a>
+      </div>
+      <div class="md:hidden flex items-center">
+        <button id="menuToggle" class="text-2xl" onclick="toggleDropdown()">
+          &#9776;
+        </button>
+      </div>
     </nav>
-
-    <!-- Header -->
-    <header class="text-center py-10">
-        <h1 class="text-4xl font-bold text-gray-800">Our Collection</h1>
-        <p class="text-gray-600 mt-2">Browse our latest products</p>
+      <div
+        id="dropdownMenu"
+        class="dropdown bg-[#023047] text-white md:hidden hidden mt-14"
+      >
+        <a href="./home.html" class="block px-4 py-2 hover:bg-gray-600">HOME</a>
+        <a href="./Collection.html" class="block px-4 py-2 hover:bg-gray-600"
+          >COLLECTION</a
+        >
+        <a
+          href="./Men.Collection.html"
+          class="block px-4 py-2 hover:bg-gray-600"
+          >MEN</a
+        >
+        <a
+          href="./WomenCollection.html"
+          class="block px-4 py-2 hover:bg-gray-600"
+          >WOMEN</a
+        >
+        <a href="./Register.html" class="block px-4 py-2 hover:bg-gray-600">
+          <i class="fa-solid fa-user"></i>
+        </a>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-600">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-600">
+          <i class="fa-solid fa-search"></i>
+        </a>
+      </div>
     </header>
-
-    <!-- Product Grid -->
-    <section class="container mx-auto px-6">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-
-            <!-- Product Card 1 -->
-            <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition">
-                <img src="https://via.placeholder.com/300" alt="Product Image" class="w-full h-48 object-cover rounded-lg">
-                <h2 class="text-lg font-semibold text-gray-800 mt-4">Product Name</h2>
-                <p class="text-gray-600">$49.99</p>
-                <div class="mt-3 flex justify-between">
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Add to Cart</button>
-                    <a href="#" class="text-blue-500 hover:underline">View Details</a>
-                </div>
+    <main class="mt-10 px-32 bg-pink-50">
+      <!-- Section1 -->
+      <section class="py-10 px-4">
+        <h2 class="text-3xl font-bold text-center mb-8">
+          Choose Your Collection
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Men Collection -->
+          <div class="bg-white border border-gray-300 rounded-lg shadow-md">
+            <img
+              src="/src/IMG/MENColl.png"
+              alt="Men Collection"
+              class="w-full rounded-t-lg object-contain"
+            />
+            <div class="p-4 text-center">
+              <a
+                href="#"
+                class="mt-2 inline-block text-black border py-2 px-4 rounded transition duration-300 hover:bg-gray-600"
+                >Men Collection</a
+              >
             </div>
-
-            <!-- Product Card 2 -->
-            <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition">
-                <img src="https://via.placeholder.com/300" alt="Product Image" class="w-full h-48 object-cover rounded-lg">
-                <h2 class="text-lg font-semibold text-gray-800 mt-4">Product Name</h2>
-                <p class="text-gray-600">$59.99</p>
-                <div class="mt-3 flex justify-between">
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Add to Cart</button>
-                    <a href="#" class="text-blue-500 hover:underline">View Details</a>
-                </div>
+          </div>
+          <!-- Women Collection -->
+          <div class="bg-white border border-gray-300 rounded-lg shadow-md">
+            <img
+              src="/src/IMG/WomenColl.png"
+              alt="Men Collection"
+              class="w-full rounded-t-lg object-contain"
+            />
+            <div class="p-4 text-center">
+              <a
+                href="#"
+                class="mt-2 inline-block text-black border py-2 px-4 rounded transition duration-300 hover:bg-gray-600"
+                >Women Collection</a
+              >
             </div>
-
-            <!-- Product Card 3 -->
-            <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition">
-                <img src="https://via.placeholder.com/300" alt="Product Image" class="w-full h-48 object-cover rounded-lg">
-                <h2 class="text-lg font-semibold text-gray-800 mt-4">Product Name</h2>
-                <p class="text-gray-600">$39.99</p>
-                <div class="mt-3 flex justify-between">
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Add to Cart</button>
-                    <a href="#" class="text-blue-500 hover:underline">View Details</a>
-                </div>
-            </div>
-
-            <!-- More products... -->
-            
+          </div>
         </div>
-    </section>
+      </section>
+      <!-- End Section1 -->
+      <!--  Section2 -->
+      <section class="py-10 px-4">
+        <h2 class="text-3xl font-bold text-center mb-8">
+          The Collection of the Week
+        </h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+        >
+          <!-- Product Card 1 -->
+          <div
+            class="bg-white border pb-5 border-gray-300 rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg w-48 max-w-sm mx-auto"
+          >
+            <img
+              src="/src/IMG/men1.png"
+              alt="T-Shirt 1"
+              class="w-full h-48 object-cover"
+            />
+            <p
+              class="text-2xl font-bold text-black hover:text-blue-800 transition duration-300 mb-1 text-center"
+            >
+              $9.99
+            </p>
+            <div class="px-10 flex flex-row items-center justify-between">
+              <p class="text-sm text-gray-700 font-semibold">T-Shirt</p>
+              <i
+                onclick="addToCart('T-Shirt 1', 9.99, '/src/IMG/men1.png')"
+                class="fa-regular fa-bookmark text-yellow-500 hover:text-yellow-700 transition duration-300 mt-2 cursor-pointer"
+                title="Add to Cart"
+              ></i>
+            </div>
+          </div>
 
+          <!-- Product Card 2 -->
+          <div
+            class="bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg w-48 mx-auto"
+          >
+            <img
+              src="/src/IMG/men2.png"
+              alt="T-Shirt 2"
+              class="w-full h-48 object-cover"
+            />
+            <p
+              class="text-2xl font-bold text-black hover:text-blue-800 transition duration-300 mb-1 text-center"
+            >
+              $9.99
+            </p>
+            <div class="px-10 flex flex-row items-center justify-between">
+              <p class="text-sm text-gray-700 font-semibold">T-Shirt</p>
+              <i
+                onclick="addToCart('T-Shirt 2', 9.99, '/src/IMG/men2.png')"
+                class="fa-regular fa-bookmark text-yellow-500 hover:text-yellow-700 transition duration-300 mt-2 cursor-pointer"
+                title="Add to Cart"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div
+            class="bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg w-48 mx-auto"
+          >
+            <img
+              src="/src/IMG/men3.png"
+              alt="T-Shirt 3"
+              class="w-full h-48 object-cover"
+            />
+            <p
+              class="text-2xl font-bold text-black hover:text-blue-800 transition duration-300 mb-1 text-center"
+            >
+              $9.99
+            </p>
+            <div class="px-10 flex flex-row items-center justify-between">
+              <p class="text-sm text-gray-700 font-semibold">T-Shirt</p>
+              <i
+                onclick="addToCart('T-Shirt 3', 9.99, '/src/IMG/men3.png')"
+                class="fa-regular fa-bookmark text-yellow-500 hover:text-yellow-700 transition duration-300 mt-2 cursor-pointer"
+                title="Add to Cart"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Product Card 4 -->
+          <div
+            class="bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg w-48 mx-auto"
+          >
+            <img
+              src="/src/IMG/men4.png"
+              alt="T-Shirt 4"
+              class="w-full h-48 object-cover"
+            />
+            <p
+              class="text-2xl font-bold text-black hover:text-blue-800 transition duration-300 mb-1 text-center"
+            >
+              $9.99
+            </p>
+            <div class="px-10 flex flex-row items-center justify-between">
+              <p class="text-sm text-gray-700 font-semibold">T-Shirt</p>
+              <i
+                onclick="addToCart('T-Shirt 4', 9.99, '/src/IMG/men4.png')"
+                class="fa-regular fa-bookmark text-yellow-500 hover:text-yellow-700 transition duration-300 mt-2 cursor-pointer"
+                title="Add to Cart"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Product Card 5 -->
+          <div
+            class="bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg w-48 mx-auto"
+          >
+            <img
+              src="/src/IMG/men5.png"
+              alt="T-Shirt 5"
+              class="w-full h-48 object-cover"
+            />
+            <p
+              class="text-2xl font-bold text-black hover:text-blue-800 transition duration-300 mb-1 text-center"
+            >
+              $9.99
+            </p>
+            <div class="px-10 flex flex-row items-center justify-between">
+              <p class="text-sm text-gray-700 font-semibold">T-Shirt</p>
+              <i
+                onclick="addToCart('T-Shirt 5', 9.99, '/src/IMG/men5.png')"
+                class="fa-regular fa-bookmark text-yellow-500 hover:text-yellow-700 transition duration-300 mt-2 cursor-pointer"
+                title="Add to Cart"
+              ></i>
+            </div>
+          </div>
+          <div
+            class="bg-white border pb-5 border-gray-300 rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg w-48 max-w-sm mx-auto"
+          >
+            <img
+              src="/src/IMG/Wonmen1.png"
+              alt="T-Shirt 1"
+              class="w-full h-48 object-cover"
+            />
+            <p
+              class="text-2xl font-bold text-black hover:text-blue-800 transition duration-300 mb-1 text-center"
+            >
+              $9.99
+            </p>
+            <div class="px-10 flex flex-row items-center justify-between">
+              <p class="text-sm text-gray-700 font-semibold">T-Shirt</p>
+              <i
+                onclick="addToCart('T-Shirt 1', 9.99, '/src/IMG/Wonmen1.png')"
+                class="fa-regular fa-bookmark text-yellow-500 hover:text-yellow-700 transition duration-300 mt-2 cursor-pointer"
+                title="Add to Cart"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Product Card 7 -->
+          <div
+            class="bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg w-48 mx-auto"
+          >
+            <img
+              src="/src/IMG/Wonmen2.png"
+              alt="T-Shirt 2"
+              class="w-full h-48 object-cover"
+            />
+            <p
+              class="text-2xl font-bold text-black hover:text-blue-800 transition duration-300 mb-1 text-center"
+            >
+              $9.99
+            </p>
+            <div class="px-10 flex flex-row items-center justify-between">
+              <p class="text-sm text-gray-700 font-semibold">T-Shirt</p>
+              <i
+                onclick="addToCart('T-Shirt 2', 9.99, '/src/IMG/Women2.png')"
+                class="fa-regular fa-bookmark text-yellow-500 hover:text-yellow-700 transition duration-300 mt-2 cursor-pointer"
+                title="Add to Cart"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Product Card 8 -->
+          <div
+            class="bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg w-48 mx-auto"
+          >
+            <img
+              src="/src/IMG/Wonmen10.png"
+              alt="T-Shirt 3"
+              class="w-full h-48 object-cover"
+            />
+            <p
+              class="text-2xl font-bold text-black hover:text-blue-800 transition duration-300 mb-1 text-center"
+            >
+              $9.99
+            </p>
+            <div class="px-10 flex flex-row items-center justify-between">
+              <p class="text-sm text-gray-700 font-semibold">T-Shirt</p>
+              <i
+                onclick="addToCart('T-Shirt 3', 9.99, '/src/IMG/Wonmen10.png')"
+                class="fa-regular fa-bookmark text-yellow-500 hover:text-yellow-700 transition duration-300 mt-2 cursor-pointer"
+                title="Add to Cart"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Product Card 9 -->
+          <div
+            class="bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg w-48 mx-auto"
+          >
+            <img
+              src="/src/IMG/Wonmen11.png"
+              alt="T-Shirt 4"
+              class="w-full h-48 object-cover"
+            />
+            <p
+              class="text-2xl font-bold text-black hover:text-blue-800 transition duration-300 mb-1 text-center"
+            >
+              $9.99
+            </p>
+            <div class="px-10 flex flex-row items-center justify-between">
+              <p class="text-sm text-gray-700 font-semibold">T-Shirt</p>
+              <i
+                onclick="addToCart('T-Shirt 4', 9.99, '/src/IMG/Wonmen11.png')"
+                class="fa-regular fa-bookmark text-yellow-500 hover:text-yellow-700 transition duration-300 mt-2 cursor-pointer"
+                title="Add to Cart"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Product Card 10 -->
+          <div
+            class="bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg w-48 mx-auto"
+          >
+            <img
+              src="/src/IMG/Wonmen12.png"
+              alt="T-Shirt 5"
+              class="w-full h-48 object-cover"
+            />
+            <p
+              class="text-2xl font-bold text-black hover:text-blue-800 transition duration-300 mb-1 text-center"
+            >
+              $9.99
+            </p>
+            <div class="px-10 flex flex-row items-center justify-between">
+              <p class="text-sm text-gray-700 font-semibold">T-Shirt</p>
+              <i
+                onclick="addToCart('T-Shirt 5', 9.99, '/src/IMG/Wonmen12.png')"
+                class="fa-regular fa-bookmark text-yellow-500 hover:text-yellow-700 transition duration-300 mt-2 cursor-pointer"
+                title="Add to Cart"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Section2 -->
+    </main>
     <!-- Footer -->
-    <footer class="text-center py-6 mt-10 bg-white shadow-md">
-        <p class="text-gray-600">© 2025 ClosteShop. All rights reserved.</p>
+    <footer class="bg-gray-800 text-white py-10">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- About Us Section -->
+          <div>
+            <h3 class="font-bold mb-4">About Us</h3>
+            <p class="text-gray-400">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum at ligula euismod.
+            </p>
+          </div>
+          <!-- Links Section -->
+          <div>
+            <h3 class="font-bold mb-4">Quick Links</h3>
+            <ul>
+              <li><a href="#" class="hover:text-red-400">Home</a></li>
+              <li><a href="#" class="hover:text-red-400">Shop</a></li>
+              <li><a href="#" class="hover:text-red-400">About Us</a></li>
+              <li><a href="#" class="hover:text-red-400">Contact</a></li>
+            </ul>
+          </div>
+          <!-- Contact Section -->
+          <div>
+            <h3 class="font-bold mb-4">Contact Us</h3>
+            <p class="text-gray-400">Email: support@example.com</p>
+            <p class="text-gray-400">Phone: (123) 456-7890</p>
+          </div>
+          <!-- Newsletter Section -->
+          <div class="flex flex-col">
+            <h3 class="font-bold mb-4 text-center">
+              Subscribe to Our Newsletter
+            </h3>
+            <form class="flex justify-center text-black">
+              <input
+                type="email"
+                placeholder="Your email"
+                class="px-4 py-2 rounded-l-md focus:outline-none w-64"
+                required
+              />
+              <button
+                type="submit"
+                class="bg-red-500 text-white px-4 py-2 rounded-r-md transition duration-300 hover:bg-red-600"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="text-center mt-10 border-t border-gray-700 pt-4">
+          <p class="text-gray-400">© 2023 Your Company. All rights reserved.</p>
+          <div class="flex justify-center space-x-4 mt-2">
+            <a href="#" class="hover:text-red-400"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" class="hover:text-red-400"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" class="hover:text-red-400"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="hover:text-red-400"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+        </div>
+      </div>
     </footer>
-
-</body>
+    <!-- End Footer -->
+  </body>
+  <script src="/src/JS/index.js"></script>
 </html>
